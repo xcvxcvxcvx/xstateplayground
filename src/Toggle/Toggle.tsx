@@ -6,8 +6,8 @@ export function ToggleOne() {
   const value = ToggleContext.useSelector((state) => state.value);
 
   return (
-    <div>
-      {value === "inactive" ? "🔴🔴" : "🟢🟢"}
+    <>
+      {value === "inactive" ? "🔴" : "🟢"}
       {value === "active" ? (
         <button
           onClick={() => {
@@ -25,7 +25,7 @@ export function ToggleOne() {
           Turn on
         </button>
       )}
-    </div>
+    </>
   );
 }
 

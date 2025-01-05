@@ -1,5 +1,29 @@
+import { ReactNode } from "react";
 import { AppContext } from "./AppContext";
-import { Toggle } from '../Toggle/Toggle'
+import { Toggle } from "../Toggle/Toggle";
+import { Timer } from "../Timer/Timer";
+
+const pageStyle = {
+  display: "flex",
+  gap: "16px",
+  flexDirection: "column",
+} as const;
+
+function Page({ children }: { children: ReactNode }) {
+  const actorRef = AppContext.useActorRef();
+  const { send } = actorRef;
+
+  const handleClick = () => {
+    send({ type: "back" });
+  };
+
+  return (
+    <div style={pageStyle}>
+      <button onClick={handleClick}>{"<-"}</button>
+      <div>{children}</div>
+    </div>
+  );
+}
 
 export function AppOne() {
   const actorRef = AppContext.useActorRef();
@@ -8,27 +32,22 @@ export function AppOne() {
 
   if (value === "toggle")
     return (
-      <div>
-        <button
-          onClick={() => {
-            send({ type: "back" });
-          }}
-        >
-          {'<-'}
-        </button>
+      <Page>
         <Toggle />
-      </div>
+      </Page>
+    );
+
+  if (value === "timer")
+    return (
+      <Page>
+        <Timer />
+      </Page>
     );
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          send({ type: "toggle" });
-        }}
-      >
-        Toggle
-      </button>
+    <div style={pageStyle}>
+      <button onClick={() => send({ type: "toggle" })}>Toggle</button>
+      <button onClick={() => send({ type: "timer" })}>Timer</button>
     </div>
   );
 }
