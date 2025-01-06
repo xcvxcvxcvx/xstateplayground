@@ -15,6 +15,7 @@ export const timerMachine = setup({
     increment: assign({ elapsed: ({ context }) => context.elapsed + 1 }),
   },
 }).createMachine({
+  /** @xstate-layout N4IgpgJg5mDOIC5gF8A0IB2B7CdGgBcBLAWzACd8QAHLWI4rDKgD0QEYAmAOk4FYAnABYBABgEA2ThIDsnAMwz56AJ4d23GQPaiZE-fKF6Bk5GeRA */
   id: "timer",
   initial: TimerState.STOPPED,
   context: { elapsed: 0 },

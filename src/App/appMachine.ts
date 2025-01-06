@@ -9,6 +9,7 @@ export const appMachine = createMachine({
         toggle: "toggle",
         timer: "timer",
         calc: "calc",
+        player: "player",
       },
     },
     toggle: {
@@ -22,6 +23,11 @@ export const appMachine = createMachine({
       },
     },
     calc: {
+      on: {
+        back: "start",
+      },
+    },
+    player: {
       on: {
         back: "start",
       },
