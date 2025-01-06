@@ -8,6 +8,7 @@ export const appMachine = createMachine({
       on: {
         toggle: "toggle",
         timer: "timer",
+        calc: "calc",
       },
     },
     toggle: {
@@ -20,5 +21,10 @@ export const appMachine = createMachine({
         back: "start",
       },
     },
+    calc: {
+      on: {
+        back: "start",
+      },
+    }
   },
 });

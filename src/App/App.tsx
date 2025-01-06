@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
 import { AppContext } from "./AppContext";
-import { Toggle } from "../Toggle/Toggle";
-import { Timer } from "../Timer/Timer";
+import { Toggle } from "../feat/Toggle/Toggle";
+import { Timer } from "../feat/Timer/Timer";
+import { Calc } from "../feat/Calc/Calc";
 
 const pageStyle = {
   display: "flex",
@@ -44,10 +45,18 @@ export function AppOne() {
       </Page>
     );
 
+  if (value === "calc")
+    return (
+      <Page>
+        <Calc />
+      </Page>
+    );
+
   return (
     <div style={pageStyle}>
-      <button onClick={() => send({ type: "toggle" })}>Toggle</button>
-      <button onClick={() => send({ type: "timer" })}>Timer</button>
+      <button onClick={() => send({ type: "toggle" })}>💡 Toggle</button>
+      <button onClick={() => send({ type: "timer" })}>⏱️ Timer</button>
+      <button onClick={() => send({ type: "calc" })}>🧮 Calc</button>
     </div>
   );
 }
